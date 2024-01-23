@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Recipe Finder App (Educational Project)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application, developed as part of an educational project, allows users to search for recipes based on ingredients. The application utilizes the Edamam API to fetch recipe data.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+- React
+- JavaScript
+- CSS
+- Edamam API
 
-### `npm start`
+## How it Works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **API Key Setup**: The application requires an Edamam API key and ID for accessing recipe data. The key and ID are stored as constants `MY_ID` and `MY_KEY`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **State Management with useState and useEffect**:
+   - `mySearch`: Manages the input value for the recipe search.
+   - `myRecipes`: Holds the recipe data fetched from the API.
+   - `wordSubmitted`: Keeps track of the submitted word for the recipe search.
 
-### `npm test`
+3. **Fetching Data with useEffect**:
+   - The `useEffect` hook is employed to fetch recipe data from the Edamam API whenever the `wordSubmitted` state changes.
+   - The `fetch` function is used to make an asynchronous call to the API endpoint.
+   - The received data is converted to JSON, and the recipes are stored in the `myRecipes` state.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Search and Form Handling**:
+   - The search input field is controlled by the `mySearch` state.
+   - The `myRecipeSearch` function updates the `mySearch` state based on the user's input.
+   - The `finalSearch` function is triggered when the form is submitted, updating the `wordSubmitted` state.
 
-### `npm run build`
+5. **Video Playback Speed Adjustment**:
+   - Another `useEffect` is used to adjust the playback speed of the background video when the component mounts.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. **Rendering Components with map**:
+   - The recipe data stored in `myRecipes` is mapped to individual `MyRecipesComponent` components using the `map` function.
+   - Each component receives specific recipe details (label, URL, image, calories, and ingredient lines) as props.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### App Component (`App.js`)
 
-### `npm run eject`
+- The main component that manages the overall structure and state of the application.
+- Utilizes various hooks such as `useState` and `useEffect`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### MyRecipesComponent (`MyRecipesComponent.js`)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- A reusable component responsible for rendering individual recipe details.
+- Receives props such as label, URL, image, calories, and ingredient lines.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Feel free to customize and extend the application based on your requirements!
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
